@@ -46,18 +46,15 @@ class MoviesPageState extends State<MoviesPage> {
 
   _buildMovieList() {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          Text('Got ${this.movieList.length} movies'),
-          RaisedButton(
-            child: Text('Back'),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-        ],
-      ),
-    );
+        child: ListView.builder(
+      itemCount: movieList.length,
+      itemBuilder: (BuildContext context, int index) {
+        Movie movie = movieList[index];
+        return ListTile(
+          title: Text(movie.title),
+          subtitle: Text(movie.overview),
+        );
+      },
+    ));
   }
 }
