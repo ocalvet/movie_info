@@ -8,7 +8,18 @@ class HomePage extends StatelessWidget {
         title: Text('MovieInfo'),
       ),
       body: Center(
-        child: Text('Home Page'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text('Home Page'),
+            RaisedButton(
+              child: Text('Movie List'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/movies');
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
