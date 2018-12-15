@@ -1,16 +1,17 @@
 # movie_info
 
-A new Flutter project.
+A new Flutter based project.
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Make sure to create a file under `<root>/lib/assets/secrets.json` with the following content:
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+```
+{
+    "movies_api_key": "[yourapikeyhere]"
+}
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+To get an api key go to [The Movie Database](https://www.themoviedb.org/).
