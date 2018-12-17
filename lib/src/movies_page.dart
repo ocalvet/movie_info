@@ -1,50 +1,51 @@
 import 'package:flutter/material.dart';
+import 'package:movie_info/src/bloc_provider.dart';
 import 'package:movie_info/src/movie_model.dart';
-import 'package:movie_info/src/movie_provider.dart';
+import 'package:movie_info/src/movies_bloc.dart';
 
-class MoviesPage extends StatefulWidget {
-  @override
-  MoviesPageState createState() {
-    return new MoviesPageState();
-  }
-}
-
-class MoviesPageState extends State<MoviesPage> {
-  List<Movie> movieList = List<Movie>();
-  @override
-  void initState() {
-    super.initState();
-    moviesProvider.getAll().then((movies) {
-      this.setState(() {
-        movieList = movies;
-      });
-    });
-  }
-
+class MoviesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    MoviesBloc bloc = BlocProvider.of<MoviesBloc>(context);
+    bloc.getMovies(null);
     return Scaffold(
       appBar: AppBar(
         title: Text('MovieInfo'),
       ),
-      body: this.movieList.length > 0
-          ? _buildMovieList()
-          : Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  CircularProgressIndicator(),
-                  Padding(
-                    padding: EdgeInsets.only(top: 15.0),
-                  ),
-                  Text('Loading Movies')
-                ],
-              ),
-            ),
+      body: StreamBuilder(
+        stream: bloc.movies$,
+        builder: (BuildContext context, AsyncSnapshot<List<Movie>> snapshot) {
+          if (snapshot.hasData) {
+            return _buildMovieList(snapshot.data);
+          }
+          return _loading();
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.refresh),
+        onPressed: () {
+          bloc.getMovies(null);
+        },
+      ),
     );
   }
 
-  _buildMovieList() {
+  Widget _loading() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          CircularProgressIndicator(),
+          Padding(
+            padding: EdgeInsets.only(top: 15.0),
+          ),
+          Text('Loading Movies')
+        ],
+      ),
+    );
+  }
+
+  _buildMovieList(List<Movie> movieList) {
     return Center(
         child: ListView.builder(
       itemCount: movieList.length,

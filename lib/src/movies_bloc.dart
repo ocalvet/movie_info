@@ -9,11 +9,10 @@ class MoviesBloc extends Bloc {
   BehaviorSubject<List<Movie>> _movies = BehaviorSubject(seedValue: []);
   Stream<List<Movie>> get movies$ => _movies.stream;
   Sink<List<Movie>> get _inMovies => _movies.sink;
-
   // Get Movies
   Subject<Null> _getMoviesStream = PublishSubject<Null>();
   Function(Null) get getMovies => _getMoviesStream.sink.add;
-
+  
   MoviesBloc() {
     _getMoviesStream.listen(_getMovies);
   }
