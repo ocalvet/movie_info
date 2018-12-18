@@ -10,14 +10,7 @@ class MoviesBloc extends Bloc {
   Stream<List<Movie>> get movies$ => _movies.stream;
   Sink<List<Movie>> get _inMovies => _movies.sink;
   // Get Movies
-  Subject<Null> _getMoviesStream = PublishSubject<Null>();
-  Function(Null) get getMovies => _getMoviesStream.sink.add;
-  
-  MoviesBloc() {
-    _getMoviesStream.listen(_getMovies);
-  }
-
-  _getMovies(Null v) async {
+  void getMovies() async {
     // get movies from provider here
     List<Movie> movies = await provider.getAll();
     this._inMovies.add(movies);

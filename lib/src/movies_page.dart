@@ -7,7 +7,7 @@ class MoviesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MoviesBloc bloc = BlocProvider.of<MoviesBloc>(context);
-    bloc.getMovies(null);
+    bloc.getMovies();
     return Scaffold(
       appBar: AppBar(
         title: Text('MovieInfo'),
@@ -24,7 +24,7 @@ class MoviesPage extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.refresh),
         onPressed: () {
-          bloc.getMovies(null);
+          bloc.getMovies();
         },
       ),
     );
