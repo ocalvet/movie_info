@@ -45,7 +45,7 @@ class MoviesPage extends StatelessWidget {
     );
   }
 
-  _buildMovieList(List<Movie> movieList) {
+  Widget _buildMovieList(List<Movie> movieList) {
     return Center(
         child: ListView.builder(
       itemCount: movieList.length,
