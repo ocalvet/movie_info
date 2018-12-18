@@ -54,6 +54,9 @@ class MoviesPage extends StatelessWidget {
         return ListTile(
           title: Text(movie.title),
           subtitle: Text(movie.overview),
+          onTap: () {
+            print('Selected ${movie.title}');
+          },
         );
       },
     ));
