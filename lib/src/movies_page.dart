@@ -58,7 +58,9 @@ class MoviesPage extends StatelessWidget {
           onTap: () {
             Navigator.push(context,
                 MaterialPageRoute(builder: (BuildContext context) {
-              return MoviePage();
+              return MoviePage(
+                movie: movie,
+              );
             }));
             print('Selected ${movie.title}');
           },
