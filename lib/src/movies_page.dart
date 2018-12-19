@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_info/src/bloc_provider.dart';
 import 'package:movie_info/src/movie_model.dart';
+import 'package:movie_info/src/movie_page.dart';
 import 'package:movie_info/src/movies_bloc.dart';
 
 class MoviesPage extends StatelessWidget {
@@ -55,6 +56,10 @@ class MoviesPage extends StatelessWidget {
           title: Text(movie.title),
           subtitle: Text(movie.overview),
           onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (BuildContext context) {
+              return MoviePage();
+            }));
             print('Selected ${movie.title}');
           },
         );
