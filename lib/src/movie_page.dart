@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:movie_info/src/bloc_provider.dart';
+import 'package:movie_info/src/credits_model.dart';
 import 'package:movie_info/src/movie_model.dart';
+import 'package:movie_info/src/movies_bloc.dart';
 
 class MoviePage extends StatelessWidget {
   final Movie movie;
@@ -7,6 +10,8 @@ class MoviePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DateTime releaseDate = DateTime.parse(movie.releaseDate);
+    MoviesBloc bloc = BlocProvider.of<MoviesBloc>(context);
+    bloc.getCredits(movie.id);
     return Scaffold(
       appBar: AppBar(
         title: Text(movie.title),
@@ -35,6 +40,17 @@ class MoviePage extends StatelessWidget {
               padding: EdgeInsets.only(top: 7.0),
             ),
             Text(movie.overview),
+            StreamBuilder(
+              stream: bloc.credits$,
+              builder: (BuildContext context, AsyncSnapshot<CreditsModel> snapshot) {
+                if (snapshot.hasData) {
+                  return Column(
+                    children: snapshot.data.cast.map((cast) => Text(cast.name)).toList(),
+                  );
+                } 
+                return CircularProgressIndicator();
+            },
+            )
           ],
         ),
       ),

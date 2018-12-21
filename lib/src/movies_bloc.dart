@@ -1,4 +1,5 @@
 import 'package:movie_info/src/bloc.dart';
+import 'package:movie_info/src/credits_model.dart';
 import 'package:movie_info/src/movie_model.dart';
 import 'package:movie_info/src/movie_provider.dart';
 import 'package:rxdart/rxdart.dart';
@@ -9,6 +10,15 @@ class MoviesBloc extends Bloc {
   BehaviorSubject<List<Movie>> _movies = BehaviorSubject(seedValue: []);
   Stream<List<Movie>> get movies$ => _movies.stream;
   Sink<List<Movie>> get _inMovies => _movies.sink;
+  // Credits
+  BehaviorSubject<CreditsModel> _credits = BehaviorSubject();
+  Stream<CreditsModel> get credits$ => _credits.stream;
+  Sink<CreditsModel> get _inCredits => _credits.sink;
+  // Get Credits
+  void getCredits(int movieId) async {
+    CreditsModel credits = await provider.getCredits(movieId);
+    this._inCredits.add(credits);
+  }
   // Get Movies
   void getMovies() async {
     // get movies from provider here
@@ -20,5 +30,6 @@ class MoviesBloc extends Bloc {
   @override
   void dispose() {
     _movies.close();
+    _credits.close();
   }
 }
