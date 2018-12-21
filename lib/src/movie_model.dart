@@ -4,7 +4,7 @@ class Movie {
   final String originalTitle;
   final String releaseDate;
   final String overview;
-  // final int voteCount;
+  final int voteCount;
   // final bool video;
   // final double voteAverage;
   // final double popularity;
@@ -15,38 +15,37 @@ class Movie {
   // final bool adult;
 
   Movie({
-      this.id,
-      this.title,
-      this.originalTitle,
-      this.overview,
-      this.releaseDate,
-    // this.voteCount,
+    this.id,
+    this.title,
+    this.originalTitle,
+    this.overview,
+    this.releaseDate,
+    this.voteCount,
     //   this.video,
     //   this.voteAverage,
     //   this.popularity,
-      this.posterPath,
+    this.posterPath,
     //   this.originalLanguage,
     //   this.genreIds,
     //   this.backdropPath,
     //   this.adult,
-      });
+  });
 
   Movie.fromJson(Map<String, dynamic> json)
-      : 
-        id = json['id'],
+      : id = json['id'],
         title = json['title'],
         originalTitle = json['original_title'],
         overview = json['overview'],
         releaseDate = json['release_date'],
-      // voteCount = json['vote_count'],
-      //   video = json['video'],
-      //   voteAverage = json['vote_average'],
-      //   popularity = json['popularity'],
+        voteCount = json['vote_count'],
+        //   video = json['video'],
+        //   voteAverage = json['vote_average'],
+        //   popularity = json['popularity'],
         posterPath = json['poster_path'];
-      //   originalLanguage = json['original_language'],
-      //   genreIds = json['genre_ids'].cast<int>(),
-      //   backdropPath = json['backdrop_path'],
-      //   adult = json['adult'];
+  //   originalLanguage = json['original_language'],
+  //   genreIds = json['genre_ids'].cast<int>(),
+  //   backdropPath = json['backdrop_path'],
+  //   adult = json['adult'];
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();

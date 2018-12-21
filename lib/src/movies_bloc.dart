@@ -13,6 +13,7 @@ class MoviesBloc extends Bloc {
   void getMovies() async {
     // get movies from provider here
     List<Movie> movies = await provider.getAll();
+    movies.sort((movieA, movieB) => -movieA.voteCount.compareTo(movieB.voteCount));
     this._inMovies.add(movies);
   }
 

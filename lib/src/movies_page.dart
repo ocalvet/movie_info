@@ -53,7 +53,14 @@ class MoviesPage extends StatelessWidget {
       itemBuilder: (BuildContext context, int index) {
         Movie movie = movieList[index];
         return ListTile(
-          title: Text(movie.title),
+          leading: Container(
+            width: 60,
+            color: Colors.red,
+            child: Image.network(
+                "http://image.tmdb.org/t/p/w92${movie.posterPath}",
+                fit: BoxFit.fitWidth),
+          ),
+          title: Text("${movie.title} - (${movie.voteCount})"),
           subtitle: Text(movie.overview),
           onTap: () {
             Navigator.push(context,
