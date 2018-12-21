@@ -6,22 +6,30 @@ class MoviePage extends StatelessWidget {
   MoviePage({this.movie});
   @override
   Widget build(BuildContext context) {
-    DateTime releaseDate =DateTime.parse(movie.releaseDate);
+    DateTime releaseDate = DateTime.parse(movie.releaseDate);
     return Scaffold(
       appBar: AppBar(
         title: Text(movie.title),
       ),
       body: Padding(
         padding: EdgeInsets.all(10.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: ListView(
+          // mainAxisAlignment: MainAxisAlignment.start,
+          // crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Image.network(
+              "http://image.tmdb.org/t/p/original${movie.posterPath}",
+              fit: BoxFit.fitWidth,
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 10),
+            ),
             Container(
               decoration:
                   BoxDecoration(border: Border.all(color: Colors.white54)),
               padding: EdgeInsets.all(5.0),
-              child: Text('${movie.title} - ${releaseDate.month}/${releaseDate.day}/${releaseDate.year}'),
+              child: Text(
+                  '${movie.title} - ${releaseDate.month}/${releaseDate.day}/${releaseDate.year}'),
             ),
             Padding(
               padding: EdgeInsets.only(top: 7.0),

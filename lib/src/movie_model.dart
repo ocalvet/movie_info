@@ -8,7 +8,7 @@ class Movie {
   // final bool video;
   // final double voteAverage;
   // final double popularity;
-  // final String posterPath;
+  final String posterPath;
   // final String originalLanguage;
   // final List<int> genreIds;
   // final String backdropPath;
@@ -24,7 +24,7 @@ class Movie {
     //   this.video,
     //   this.voteAverage,
     //   this.popularity,
-    //   this.posterPath,
+      this.posterPath,
     //   this.originalLanguage,
     //   this.genreIds,
     //   this.backdropPath,
@@ -37,12 +37,12 @@ class Movie {
         title = json['title'],
         originalTitle = json['original_title'],
         overview = json['overview'],
-        releaseDate = json['release_date'];
+        releaseDate = json['release_date'],
       // voteCount = json['vote_count'],
       //   video = json['video'],
       //   voteAverage = json['vote_average'],
       //   popularity = json['popularity'],
-      //   posterPath = json['poster_path'],
+        posterPath = json['poster_path'];
       //   originalLanguage = json['original_language'],
       //   genreIds = json['genre_ids'].cast<int>(),
       //   backdropPath = json['backdrop_path'],
@@ -59,7 +59,7 @@ class Movie {
     // data['video'] = this.video;
     // data['vote_average'] = this.voteAverage;
     // data['popularity'] = this.popularity;
-    // data['poster_path'] = this.posterPath;
+    data['poster_path'] = this.posterPath;
     // data['original_language'] = this.originalLanguage;
     // data['genre_ids'] = this.genreIds;
     // data['backdrop_path'] = this.backdropPath;
