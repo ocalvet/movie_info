@@ -45,17 +45,24 @@ class MoviePage extends StatelessWidget {
               builder:
                   (BuildContext context, AsyncSnapshot<CreditsModel> snapshot) {
                 if (snapshot.hasData) {
+                  List<Widget> children = List<Widget>();
+                  children.add(Padding(padding: EdgeInsets.only(top: 15.0),));
+                  children.add(Text('Cast'));
+                  children.add(Padding(padding: EdgeInsets.only(top: 10.0),));
+                  children.addAll(snapshot.data.cast
+                        .map((cast) => Text(cast.name)));
                   return Column(
-                    children: snapshot.data.cast
-                        .map((cast) => Text(cast.name))
-                        .toList(),
+                    children: children,
                   );
                 }
-                return Center(
-                  child: Container(
-                    width: 50,
-                    height: 50,
-                    child: CircularProgressIndicator(),
+                return Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Center(
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      child: CircularProgressIndicator(),
+                    ),
                   ),
                 );
               },
