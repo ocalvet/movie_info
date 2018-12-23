@@ -54,11 +54,13 @@ class MoviesPage extends StatelessWidget {
         Movie movie = movieList[index];
         return ListTile(
           leading: Container(
+            alignment: Alignment.topLeft,
             width: 60,
             color: Colors.red,
             child: Image.network(
                 "http://image.tmdb.org/t/p/w92${movie.posterPath}",
-                fit: BoxFit.fitWidth),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.topLeft,),
           ),
           title: Text("${movie.title} - (${movie.voteCount})"),
           subtitle: Text(movie.overview),
