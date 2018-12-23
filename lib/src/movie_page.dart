@@ -42,14 +42,23 @@ class MoviePage extends StatelessWidget {
             Text(movie.overview),
             StreamBuilder(
               stream: bloc.credits$,
-              builder: (BuildContext context, AsyncSnapshot<CreditsModel> snapshot) {
+              builder:
+                  (BuildContext context, AsyncSnapshot<CreditsModel> snapshot) {
                 if (snapshot.hasData) {
                   return Column(
-                    children: snapshot.data.cast.map((cast) => Text(cast.name)).toList(),
+                    children: snapshot.data.cast
+                        .map((cast) => Text(cast.name))
+                        .toList(),
                   );
-                } 
-                return CircularProgressIndicator();
-            },
+                }
+                return Center(
+                  child: Container(
+                    width: 50,
+                    height: 50,
+                    child: CircularProgressIndicator(),
+                  ),
+                );
+              },
             )
           ],
         ),
