@@ -14,7 +14,21 @@ class MovieProvider {
         'api_key': secrets.moviesApiKey
       }
     );
-    print(uri);
+    var response = await http.get(uri.toString());
+    List<Movie> list = (json.decode(response.body)['results'] as List)
+      .map((json) => Movie.fromJson(json))
+      .toList();
+    return list;
+  }
+
+  Future<List<Movie>> getTrending() async {
+    var secrets = await secretsLoader.load();
+    var uri = Uri.https(
+      'api.themoviedb.org',
+      '/3/trending/movie/day',{
+        'api_key': secrets.moviesApiKey
+      }
+    );
     var response = await http.get(uri.toString());
     List<Movie> list = (json.decode(response.body)['results'] as List)
       .map((json) => Movie.fromJson(json))
