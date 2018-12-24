@@ -11,14 +11,16 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text('Home Page'),
-            Padding(
-              padding: EdgeInsets.only(top: 15.00),
-            ),
             RaisedButton(
-              child: Text('Show Movies'),
+              child: Text('Playing now'),
               onPressed: () {
                 Navigator.pushNamed(context, '/movies');
+              },
+            ),
+            RaisedButton(
+              child: Text('Trending'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/trending');
               },
             ),
           ],

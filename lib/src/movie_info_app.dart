@@ -3,6 +3,7 @@ import 'package:movie_info/src/bloc_provider.dart';
 import 'package:movie_info/src/home_page.dart';
 import 'package:movie_info/src/movies_bloc.dart';
 import 'package:movie_info/src/movies_page.dart';
+import 'package:movie_info/src/trending_page.dart';
 
 class MovieInfoApp extends StatelessWidget {
   @override
@@ -17,6 +18,7 @@ class MovieInfoApp extends StatelessWidget {
         routes: {
           '/': (context) => HomePage(),
           '/movies': (context) => MoviesPage(),
+          '/trending': (context) => TrendingPage(),
         },
       ),
     );
