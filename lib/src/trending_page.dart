@@ -17,7 +17,26 @@ class TrendingPage extends StatelessWidget {
           return ListView.builder(
             itemBuilder: (BuildContext context, int index) {
               Movie movie = snapshot.data[index];
-              return ListTile(title: Text(movie.title));
+              return Stack(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Container(
+                      height: 50,
+                      width: double.infinity,
+                      child: Material(
+                        elevation: 2,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            Text(movie.title),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              );
             },
             itemCount: snapshot.data.length,
           );
