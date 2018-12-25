@@ -25,6 +25,8 @@ class HomePage extends StatelessWidget {
                   'Playing Now',
                   style: TextStyle(
                     fontSize: 40,
+                    fontFamily: 'IndieFlower',
+                    color: Colors.black87,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
@@ -44,6 +46,8 @@ class HomePage extends StatelessWidget {
                   'Trending',
                   style: TextStyle(
                     fontSize: 40,
+                    fontFamily: 'IndieFlower',
+                    color: Colors.black87,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
