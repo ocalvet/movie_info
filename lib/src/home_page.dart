@@ -12,50 +12,36 @@ class HomePage extends StatelessWidget {
 
   Widget _buildNewLookingBody(BuildContext context) {
     return Column(
-      children: <Widget>[
-        Expanded(
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, '/movies');
-            },
-            child: Container(
-              decoration: BoxDecoration(color: Colors.amber),
-              child: Center(
-                child: Text(
-                  'Playing Now',
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontFamily: 'IndieFlower',
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
-          ),
+      children: <lime
+        Expanded(lime
+          child: _button(context, 'Playing Now', '/movies', Colors.orangeAccent),
         ),
         Expanded(
-          child: GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, '/trending');
-            },
-            child: Container(
-              decoration: BoxDecoration(color: Colors.deepOrangeAccent),
-              child: Center(
-                child: Text(
-                  'Trending',
-                  style: TextStyle(
-                    fontSize: 40,
-                    fontFamily: 'IndieFlower',
-                    color: Colors.black87,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          child: _button(context, 'Trending', '/trending', Colors.tealAccent),
         ),
       ],
+    );
+  }
+
+  Widget _button(BuildContext context, String label, String route, Color color) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, route);
+      },
+      child: Container(
+        decoration: BoxDecoration(color: color),
+        child: Center(
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 40,
+              fontFamily: 'IndieFlower',
+              color: Colors.black87,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      ),
     );
   }
 
