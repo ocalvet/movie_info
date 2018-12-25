@@ -44,30 +44,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-  Widget _buildBody(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          MaterialButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/movies');
-            },
-            minWidth: double.infinity,
-            child: Text('Playing now'),
-            color: Colors.blue,
-          ),
-          MaterialButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/trending');
-            },
-            minWidth: double.infinity,
-            child: Text('Trending'),
-            color: Colors.blue,
-          ),
-        ],
-      ),
-    );
-  }
 }
