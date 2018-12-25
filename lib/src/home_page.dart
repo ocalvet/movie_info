@@ -12,8 +12,8 @@ class HomePage extends StatelessWidget {
 
   Widget _buildNewLookingBody(BuildContext context) {
     return Column(
-      children: <lime
-        Expanded(lime
+      children: <Widget>[
+        Expanded(
           child: _button(context, 'Playing Now', '/movies', Colors.orangeAccent),
         ),
         Expanded(
