@@ -1,12 +1,12 @@
-# movie_info
+# Welcome to MoviInfo
 
-A new Flutter based project.
+This projects is used to explorer multiple flutter Widgets and architectural patterns. It uses the movie database api to movie data
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Install the Flutter SDK.
 
-Make sure to create a file under `<root>/lib/assets/secrets.json` with the following content:
+Create a file under `<root>/lib/assets/secrets.json` with the following content:
 
 ```
 {
@@ -14,4 +14,6 @@ Make sure to create a file under `<root>/lib/assets/secrets.json` with the follo
 }
 ```
 
-To get an api key go to [The Movie Database](https://www.themoviedb.org/).
+*Note:* To get an api key go to [The Movie Database](https://www.themoviedb.org/).
+
+Run the project: `$ flutter run` 
