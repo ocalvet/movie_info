@@ -8,13 +8,13 @@ class UpcomingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MoviesBloc bloc = BlocProvider.of<MoviesBloc>(context);
-    bloc.getCurrentlyPlayingMovies();
+    bloc.getUpcoming();
     return Scaffold(
       appBar: AppBar(
         title: Text('Upcoming'),
       ),
       body: StreamBuilder(
-        stream: bloc.movies$,
+        stream: bloc.upcomingMovies$,
         builder: (BuildContext context, AsyncSnapshot<List<Movie>> snapshot) {
           if (snapshot.hasData) {
             return _buildMovieList(snapshot.data);
