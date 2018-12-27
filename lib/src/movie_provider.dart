@@ -49,6 +49,21 @@ class MovieProvider {
     CreditsModel credits = (CreditsModel.fromJson(json.decode(response.body)));
     return credits;
   }
+
+  Future<List<Movie>> getUpcoming() async {
+    var secrets = await secretsLoader.load();
+    var uri = Uri.https(
+      'api.themoviedb.org',
+      '/3/movie/upcoming',{
+        'api_key': secrets.moviesApiKey
+      }
+    );
+    var response = await http.get(uri.toString());
+    List<Movie> list = (json.decode(response.body)['results'] as List)
+      .map((json) => Movie.fromJson(json))
+      .toList();
+    return list;
+  }
 }
 
 MovieProvider moviesProvider = MovieProvider();
