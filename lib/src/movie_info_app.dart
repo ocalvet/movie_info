@@ -4,6 +4,7 @@ import 'package:movie_info/src/home_page.dart';
 import 'package:movie_info/src/movies_bloc.dart';
 import 'package:movie_info/src/playing_now_page.dart';
 import 'package:movie_info/src/trending_page.dart';
+import 'package:movie_info/src/upcoming_page.dart';
 
 class MovieInfoApp extends StatelessWidget {
   @override
@@ -19,6 +20,7 @@ class MovieInfoApp extends StatelessWidget {
           '/': (context) => HomePage(),
           '/movies': (context) => PlayingNowPage(),
           '/trending': (context) => TrendingPage(),
+          '/upcoming': (context) => UpcomingPage(),
         },
       ),
     );
