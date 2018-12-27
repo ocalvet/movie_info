@@ -7,12 +7,15 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           title: Text('MovInfo'),
         ),
-        body: _buildNewLookingBody(context));
+        body: _buildBody(context));
   }
 
-  Widget _buildNewLookingBody(BuildContext context) {
+  Widget _buildBody(BuildContext context) {
     return Column(
       children: <Widget>[
+        Expanded(
+          child: _button(context, 'Upcoming', '/upcoming', Colors.lightGreenAccent),
+        ),
         Expanded(
           child: _button(context, 'Playing Now', '/movies', Colors.orangeAccent),
         ),
