@@ -10,7 +10,7 @@ class TrendingPage extends StatelessWidget {
     MoviesBloc bloc = BlocProvider.of<MoviesBloc>(context);
     bloc.getTrending();
     return Scaffold(
-      appBar: AppBar(title: Text('Trending Movies')),
+      appBar: AppBar(title: Text('Trending')),
       body: StreamBuilder(
         stream: bloc.trendingMovies$,
         builder: (BuildContext context, AsyncSnapshot snapshot) {

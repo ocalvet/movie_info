@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_info/src/bloc_provider.dart';
 import 'package:movie_info/src/home_page.dart';
 import 'package:movie_info/src/movies_bloc.dart';
-import 'package:movie_info/src/movies_page.dart';
+import 'package:movie_info/src/playing_now_page.dart';
 import 'package:movie_info/src/trending_page.dart';
 
 class MovieInfoApp extends StatelessWidget {
@@ -17,7 +17,7 @@ class MovieInfoApp extends StatelessWidget {
         initialRoute: '/',
         routes: {
           '/': (context) => HomePage(),
-          '/movies': (context) => MoviesPage(),
+          '/movies': (context) => PlayingNowPage(),
           '/trending': (context) => TrendingPage(),
         },
       ),

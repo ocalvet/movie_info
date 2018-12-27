@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:movie_info/src/bloc_provider.dart';
 import 'package:movie_info/src/movie_model.dart';
-import 'package:movie_info/src/movie_page.dart';
 import 'package:movie_info/src/movie_widget.dart';
 import 'package:movie_info/src/movies_bloc.dart';
 
-class MoviesPage extends StatelessWidget {
+class PlayingNowPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     MoviesBloc bloc = BlocProvider.of<MoviesBloc>(context);
     bloc.getCurrentlyPlayingMovies();
     return Scaffold(
       appBar: AppBar(
-        title: Text('MovieInfo'),
+        title: Text('Playing Now'),
       ),
       body: StreamBuilder(
         stream: bloc.movies$,

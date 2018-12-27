@@ -5,7 +5,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('MovieInfo'),
+          title: Text('MovInfo'),
         ),
         body: _buildNewLookingBody(context));
   }
