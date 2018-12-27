@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_info/src/bloc_provider.dart';
 import 'package:movie_info/src/movie_model.dart';
+import 'package:movie_info/src/movie_widget.dart';
 import 'package:movie_info/src/movies_bloc.dart';
 
 class TrendingPage extends StatelessWidget {
@@ -9,7 +10,7 @@ class TrendingPage extends StatelessWidget {
     MoviesBloc bloc = BlocProvider.of<MoviesBloc>(context);
     bloc.getTrending();
     return Scaffold(
-      appBar: AppBar(title: Text('Trending Page')),
+      appBar: AppBar(title: Text('Trending Movies')),
       body: StreamBuilder(
         stream: bloc.trendingMovies$,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -17,26 +18,7 @@ class TrendingPage extends StatelessWidget {
           return ListView.builder(
             itemBuilder: (BuildContext context, int index) {
               Movie movie = snapshot.data[index];
-              return Stack(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Container(
-                      height: 50,
-                      width: double.infinity,
-                      child: Material(
-                        elevation: 2,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Text(movie.title),
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              );
+              return MovieWidget(movie: movie);
             },
             itemCount: snapshot.data.length,
           );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_info/src/bloc_provider.dart';
 import 'package:movie_info/src/movie_model.dart';
 import 'package:movie_info/src/movie_page.dart';
+import 'package:movie_info/src/movie_widget.dart';
 import 'package:movie_info/src/movies_bloc.dart';
 
 class MoviesPage extends StatelessWidget {
@@ -52,28 +53,7 @@ class MoviesPage extends StatelessWidget {
       itemCount: movieList.length,
       itemBuilder: (BuildContext context, int index) {
         Movie movie = movieList[index];
-        return ListTile(
-          leading: Container(
-            alignment: Alignment.topLeft,
-            width: 60,
-            color: Colors.red,
-            child: Image.network(
-                "http://image.tmdb.org/t/p/w92${movie.posterPath}",
-                fit: BoxFit.fitWidth,
-                alignment: Alignment.topLeft,),
-          ),
-          title: Text("${movie.title} - (${movie.voteCount})"),
-          subtitle: Text(movie.overview),
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (BuildContext context) {
-              return MoviePage(
-                movie: movie,
-              );
-            }));
-            print('Selected ${movie.title}');
-          },
-        );
+        return MovieWidget(movie: movie);
       },
     ));
   }
