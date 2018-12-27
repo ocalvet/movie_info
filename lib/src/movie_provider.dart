@@ -61,6 +61,7 @@ class MovieProvider {
     var response = await http.get(uri.toString());
     List<Movie> list = (json.decode(response.body)['results'] as List)
       .map((json) => Movie.fromJson(json))
+      .where((movie) => DateTime.parse(movie.releaseDate).compareTo(DateTime.now()) > 0)
       .toList();
     return list;
   }
