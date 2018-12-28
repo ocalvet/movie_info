@@ -18,36 +18,39 @@ class MapPageState extends State<MapPage> {
   void initState() {
     currentLocation = <String, double>{};
     location = Location();
+    location
+        .getLocation()
+        .then((cL) => this.setState(() => currentLocation = cL));
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Map'),
-      ),
-      body: Container(
-        child: GoogleMap(
-          onMapCreated: (GoogleMapController controller) async {
-            mapController = controller;
-            try {
-              currentLocation = await location.getLocation();
-              controller.animateCamera(
-                CameraUpdate.newCameraPosition(
-                  CameraPosition(
-                      target: LatLng(currentLocation["latitude"], currentLocation["longitude"]), zoom: 12.0),
-                ),
-              );
-            } catch (Exception) {
-              currentLocation = null;
-            }
-          },
-          options: GoogleMapOptions(
-            myLocationEnabled: true,
-          ),
+        appBar: AppBar(
+          title: Text('Map'),
         ),
-      ),
-    );
+        body: currentLocation.length > 0
+            ? Container(
+                child: GoogleMap(
+                  onMapCreated: (GoogleMapController controller) async {
+                    mapController = controller;
+                  },
+                  options: GoogleMapOptions(
+                    myLocationEnabled: true,
+                    cameraPosition: CameraPosition(
+                        target: LatLng(
+                          currentLocation["latitude"],
+                          currentLocation["longitude"],
+                        ),
+                        zoom: 12.0),
+                  ),
+                ),
+              )
+            : Container(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ));
   }
 }
