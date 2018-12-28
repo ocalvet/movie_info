@@ -9,8 +9,13 @@ class MapPage extends StatelessWidget {
         title: Text('Map'),
       ),
       body: Container(
-          child: GoogleMap(onMapCreated: (GoogleMapController controller) {},),
+        child: GoogleMap(
+          onMapCreated: (GoogleMapController controller) {},
+          options: GoogleMapOptions(
+            myLocationEnabled: true,
           ),
+        ),
+      ),
     );
   }
 }
