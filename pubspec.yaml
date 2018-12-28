@@ -24,6 +24,8 @@ dependencies:
 
   rxdart: ^0.20.0
 
+  google_maps_flutter: ^0.0.3+3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

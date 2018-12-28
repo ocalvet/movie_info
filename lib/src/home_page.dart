@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_info/src/map_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -6,6 +7,21 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           title: Text('MovInfo'),
+          actions: <Widget>[
+            IconButton(
+              icon: Icon(Icons.map),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (BuildContext context) {
+                      return MapPage();
+                    },
+                  ),
+                );
+              },
+            )
+          ],
         ),
         body: _buildBody(context));
   }
@@ -14,10 +30,12 @@ class HomePage extends StatelessWidget {
     return Column(
       children: <Widget>[
         Expanded(
-          child: _button(context, 'Upcoming', '/upcoming', Colors.lightGreenAccent),
+          child: _button(
+              context, 'Upcoming', '/upcoming', Colors.lightGreenAccent),
         ),
         Expanded(
-          child: _button(context, 'Playing Now', '/movies', Colors.orangeAccent),
+          child:
+              _button(context, 'Playing Now', '/movies', Colors.orangeAccent),
         ),
         Expanded(
           child: _button(context, 'Trending', '/trending', Colors.tealAccent),
@@ -26,7 +44,8 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _button(BuildContext context, String label, String route, Color color) {
+  Widget _button(
+      BuildContext context, String label, String route, Color color) {
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, route);
