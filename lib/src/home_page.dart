@@ -33,6 +33,7 @@ class HomePage extends StatelessWidget {
                 'MovInfo',
                 style: TextStyle(
                   color: Colors.black87,
+                  fontSize: 24.0,
                 ),
               ),
               decoration: BoxDecoration(
